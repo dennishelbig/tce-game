@@ -1,0 +1,57 @@
+html, body{
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: calc(1vh * 0.8);
+  
+  @media(orientation: portrait){
+    font-size: calc(1vw * 0.8);;
+  }
+}
+
+
+.container{
+  width: 100rem;
+  height: 100rem;
+  background: white;
+  position: relative;
+
+  .inner{
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+}
+
+#info-box{
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  background: rgba(pink, 0.5);
+  font-size: 30px;
+  font-family: Arial;
+  padding-left: 20px;
+  box-sizing: border-box;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+
+@keyframes blink{
+  0%{
+    opacity: 0.5;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+.blink{
+  opacity: 0.5;
+  background: pink;
+  animation: blink 0.025s linear; 
+  animation-iteration-count: 1;
+}

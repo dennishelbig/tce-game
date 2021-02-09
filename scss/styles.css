@@ -1,0 +1,164 @@
+html, body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(1vh * 0.8);
+}
+@media (orientation: portrait) {
+  html, body {
+    font-size: calc(1vw * 0.8);
+  }
+}
+
+.container {
+  width: 100rem;
+  height: 100rem;
+  background: white;
+  position: relative;
+}
+.container .inner {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+#info-box {
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  background: rgba(255, 192, 203, 0.5);
+  font-size: 30px;
+  font-family: Arial;
+  padding-left: 20px;
+  box-sizing: border-box;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.blink {
+  opacity: 0.5;
+  background: pink;
+  animation: blink 0.025s linear;
+  animation-iteration-count: 1;
+}
+
+.body,
+.head,
+.arm,
+.leg,
+.forearm,
+.shin {
+  position: absolute;
+  background: red;
+  width: 2px;
+}
+
+.body {
+  height: 25rem;
+  top: 30rem;
+  left: calc(50% - 1px);
+}
+
+.head {
+  bottom: 110%;
+  width: 8rem;
+  height: 12rem;
+  left: calc(-4rem + 1px);
+  border-radius: 50%;
+}
+
+.arm {
+  height: 15rem;
+}
+.arm.left {
+  left: calc(-5rem + 1px);
+  transform: rotate(10deg);
+}
+.arm.right {
+  right: calc(-5rem + 1px);
+  transform: rotate(-10deg);
+}
+
+.leg {
+  height: 15rem;
+  top: 100%;
+}
+.leg.left {
+  left: calc(-5rem + 1px);
+}
+.leg.right {
+  right: calc(-5rem + 1px);
+  transform: rotate(0deg);
+}
+
+.arm,
+.leg,
+.forearm,
+.shin {
+  transform-origin: 50% 0;
+}
+.arm:after,
+.leg:after,
+.forearm:after,
+.shin:after {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  left: 1px;
+  top: 1px;
+  background: rgba(0, 0, 255, 0.6);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.forearm {
+  height: 15rem;
+  top: 100%;
+}
+
+.shin {
+  height: 15rem;
+  top: 100%;
+}
+
+body .up .arm {
+  transform: rotate(180deg);
+}
+body .up.right .arm {
+  transform: rotate(-135deg);
+}
+body .right .arm {
+  transform: rotate(-90deg);
+}
+body .down.right .arm {
+  transform: rotate(-45deg);
+}
+body .down .arm {
+  transform: rotate(0deg);
+}
+body .down.left .arm {
+  transform: rotate(45deg);
+}
+body .left .arm {
+  transform: rotate(90deg);
+}
+body .up.left .arm {
+  transform: rotate(135deg);
+}
+
+.arm,
+.leg {
+  transition: 0s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}

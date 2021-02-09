@@ -1,0 +1,87 @@
+.body
+,.head
+,.arm
+,.leg
+,.forearm
+,.shin
+{
+  position: absolute;
+  background: red;
+  width: 2px;  
+}
+
+
+.body{
+  height: 25rem;
+  top: 30rem;
+  left: calc(50% - 1px);
+}
+
+
+.head{
+  bottom: 110%;
+  width: 8rem;
+  height: 12rem;
+  left: calc(-4rem + 1px);
+  border-radius: 50%;
+}
+
+
+.arm{
+  height: 15rem;
+
+  &.left{
+    left: calc(-5rem + 1px);
+    transform: rotate(10deg);
+  }
+
+  &.right{
+    right: calc(-5rem + 1px);
+    transform: rotate(-10deg);
+  }
+}
+
+
+.leg{
+  height: 15rem;
+  top: 100%;
+
+  &.left{
+    left: calc(-5rem + 1px);
+  }
+
+  &.right{
+    right: calc(-5rem + 1px);
+    transform: rotate(0deg);
+  }
+}
+
+
+.arm,
+.leg,
+.forearm,
+.shin{
+  transform-origin: 50% 0;
+
+  &:after{
+    content: '';
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    left: 1px;
+    top: 1px;
+    background: rgba(blue, 0.6);
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+  }
+}
+
+.forearm{
+  height: 15rem;
+  top: 100%;
+}
+
+.shin{
+  height: 15rem;
+  top: 100%;
+}
