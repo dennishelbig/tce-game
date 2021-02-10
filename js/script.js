@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint no-unused-vars: off */
 /*global requirejs */
+
 /* 
   keycodes
   q = 81
@@ -11,7 +12,7 @@
   x = 88
   y = 89
   a = 65
-  */
+*/
 
 
 requirejs(
@@ -20,7 +21,6 @@ requirejs(
     'gsap/minified/gsap.min',
     'bodyPositions',
     'bodyParts'
-
   ],
 function (_, gsapFunction, bodyPosition, bodyParts ) {
   
@@ -117,7 +117,7 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
 
   function animate(direction){
     if( 
-      (directionStates['clock'] !== 3)&&
+      // (directionStates['clock'] !== 3)&&
       (directionStates['clock'] !== 5)
     ){
 
@@ -127,21 +127,21 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
       for( let i = 0; i < bodyKeys.length; i++ ){
 
         // maybe try map instead of object
-
         let animationArgs = { 
           duration: 0.25,
           force3D: true,
+          height: '',
           ease: "power3.out",
           // defaults if key doesn't exist
           rotate: 0,
           yPercent: 0
         }
 
+
         let bodyPartName = bodyKeys[i];
         let bodyPartDOMElement = bodyValues[i].el;
         let bodyPartArgs = bodyPosition[ clockdirection ][ bodyPartName ]; 
-
-        
+  
 
         // prepare keys & values for level 2
         let propsKeys = bodyPartArgs ? Object.keys( bodyPartArgs ) : false;
@@ -188,6 +188,7 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
   /********************************************/
 
   function onKeyChange(){
+
     assignClockDirection();
     if( _.isEqual(currentStates, directionStates) ){
       return;
@@ -197,22 +198,21 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
     infoBox.innerHTML = directionStates['clock'];
   }
 
-  // animate
-  animate(4);
-
+  // animate on start
+  animate(2); // value is clock-direction
+  infoBox.innerHTML = 2;
 
 
   function keydown(e){
     var keyDirection = getKeyDirection(e.keyCode);
       setDirection( keyDirection );
-      onKeyChange(e)
+      onKeyChange()
   }
-
 
   function keyup(e){
     var keyDirection = getKeyDirection(e.keyCode);
       unsetDirection( keyDirection );
-      onKeyChange(e)
+      onKeyChange()
   }
 
 
@@ -225,9 +225,9 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
       onKeyChange();
     }
 
-    window.requestAnimationFrame(gameLoop)
+    window.requestAnimationFrame( gameLoop )
   }
 
-  window.requestAnimationFrame(gameLoop)
+  window.requestAnimationFrame( gameLoop )
 
 }); // requirejs end 

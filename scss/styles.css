@@ -57,8 +57,18 @@ html, body {
   position: absolute;
   width: 100%;
   height: 2px;
-  background: black;
+  background: rgba(0, 0, 0, 0.2);
   bottom: 14%;
+}
+.inner:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.2);
+  top: 0%;
+  left: calc(50% - 1px);
+  z-index: 0;
 }
 
 .body,
@@ -184,18 +194,18 @@ html, body {
 
 .neck {
   height: 3.5rem;
-  bottom: 13rem;
+  bottom: 10rem;
 }
 
 .chest {
-  height: 13rem;
-  bottom: 10rem;
+  height: 10rem;
+  bottom: 13rem;
   left: calc(50% - 1px);
   transform-origin: 50% 100%;
 }
 
 .core {
-  height: 10rem;
+  height: 13rem;
   bottom: 0rem;
   left: calc(50% - 1px);
   transform-origin: 50% 100%;

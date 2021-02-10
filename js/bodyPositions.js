@@ -3,28 +3,116 @@
 // define bodyPositions
 define({
   1: {
+    head: {
+      rotate: -20
+    },
+    shoulder:{
+      rotate: 20
+    },
     armLeft: {
-      rotate: 225
+      rotate: 100,
+      height: '4rem'
+    },
+    foreArmLeft: {
+      rotate: 140
     },
     armRight: {
-      rotate: 225
+      rotate: 240
+    },
+    chest: {
+      rotate: 340
+    },
+    core:{
+      rotate: 0
+    },
+    legLeft:{
+      rotate: 20
+    },
+    shinLeft:{
+      rotate: -40
+    },
+    footLeft: {
+      rotate: -20
     }
   },
 
   2: {
-    armLeft: {
-      rotate: 270
+    body:{
+      rotate: -20,
+      yPercent: 5
+    },
+    chest:{
+      rotate: 20
+    },
+
+    armLeft:{
+      rotate: 30
     },
     armRight: {
+      rotate: 30
+    },
+
+    hip:{
+      rotate: 11
+    },
+    legLeft:{
+      rotate: 27
+    },
+    footLeft: {
+      rotate: -20
+    },
+    legRight:{
+      rotate: 10
+    },
+    footRight: {
+      rotate: -3
+    }
+  },
+
+  3: {
+    body:{
+      yPercent: 60
+    },
+    armLeft: {
+      rotate: 80
+    },
+    foreArmLeft:{
+      rotate: 280
+    },
+    handLeft:{
+      rotate: 90
+    },
+
+    armRight: {
+      rotate: 260
+    },
+    foreArmRight:{
+      rotate: 280
+    },
+    handRight:{
+      rotate: 90
+    },
+
+    legLeft: {
+      rotate: 0
+    },
+    shinLeft: {
+      rotate: 105
+    },
+    footLeft: {
+      rotate: 180
+    },
+
+    legRight: {
       rotate: 270
     },
-    chest: {
-      rotate: 340
+    shinRight: {
+      rotate: 90
     }
   },
 
   4:{
-    upperBody: {
+    body: {
       ease: 'power3.out',
       yPercent: 75
     },
@@ -72,11 +160,35 @@ define({
     }
   },
   6: {
-    armLeft: {
-      rotate: 90
+    body:{
+      rotate: 20,
+      yPercent: 5
+    },
+    chest:{
+      rotate: -20
+    },
+
+    armLeft:{
+      rotate: -30
     },
     armRight: {
-      rotate: 90
+      rotate: -30
+    },
+
+    hip:{
+      rotate: -11
+    },
+    legLeft:{
+      rotate: -10
+    },
+    footLeft: {
+      rotate: -3
+    },
+    legRight:{
+      rotate: -27
+    },
+    footRight: {
+      rotate: 20
     }
   },
   7: {
@@ -102,8 +214,20 @@ define({
     armRight : {
       rotate: 350
     },
-    upperBody: {
-      ease: 'power4.out'
+    legLeft:{
+      rotate: 8
+    },
+    legRight:{
+      rotate: -8
+    },
+    footLeft:{
+      rotate: -8
+    },
+    footRight:{
+      rotate: 8
+    },
+    body: {
+      // ease: 'power4.out'
     }
   }
 });

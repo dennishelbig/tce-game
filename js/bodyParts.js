@@ -2,7 +2,7 @@
 // define body-parts
 
 define({
-  upperBody: {
+  body: {
     el: document.querySelector('.body')
   },
   neck:{
