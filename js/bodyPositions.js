@@ -10,15 +10,24 @@ define({
       rotate: 225
     }
   },
+
   2: {
     armLeft: {
       rotate: 270
     },
     armRight: {
       rotate: 270
+    },
+    chest: {
+      rotate: 340
     }
   },
+
   4:{
+    upperBody: {
+      ease: 'power3.out',
+      yPercent: 75
+    },
     armLeft: {
       rotate: 50
     },
@@ -33,8 +42,11 @@ define({
       rotate: 70 
     },
 
-    upperBody: {
-      yPercent: 60
+    handLeft:{
+      rotate: 110
+    },
+    handRight:{
+      rotate: 250
     },
 
     legLeft: {
@@ -49,6 +61,14 @@ define({
     },
     shinRight: {
       rotate: 120
+    },
+
+    footLeft:{
+      rotate: 20
+    },
+
+    footRight:{
+      rotate: 340
     }
   },
   6: {
@@ -81,6 +101,9 @@ define({
     },
     armRight : {
       rotate: 350
+    },
+    upperBody: {
+      ease: 'power4.out'
     }
   }
 });
