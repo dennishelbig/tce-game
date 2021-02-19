@@ -36,6 +36,12 @@ html, body {
   display: flex;
   align-items: center;
 }
+#info-box.direction-key-down {
+  color: red;
+}
+#info-box.move-key-down {
+  background: rgba(255, 192, 203, 0.85);
+}
 
 @keyframes blink {
   0% {

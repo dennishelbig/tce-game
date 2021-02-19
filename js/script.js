@@ -22,26 +22,29 @@ requirejs(
     'bodyPositions',
     'bodyParts'
   ],
+
 function (_, gsapFunction, bodyPosition, bodyParts ) {
   
 
   const gsap = gsapFunction.gsap;
-
   var infoBox = document.querySelector('#info-box');
 
-  var directionStates = {
-    clock : 0,
-    up : false,
-    right : false,
-    down : false,
-    left : false
-  }
 
-  var currentStates = Object.assign({}, directionStates);
+  var keyStates;
+    keyStates = {
+      clock : 0,
+      up : false,
+      right : false,
+      down : false,
+      left : false,
+      move : false
+    }
+  var currentStates = Object.assign({}, keyStates);
 
 
 
   function getKeyDirection(input) {
+
     var inputMap = {
       38: "up", // up
       87: "up", // w
@@ -50,7 +53,8 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
       40: "down", // down
       83: "down", // s
       37: "left", // left
-      65: "left" // a
+      65: "left", // a
+      32: "move" // space
     };
 
     var defaultCode = 0;
@@ -61,67 +65,64 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
 
   // merge arrow directions to create clockwork direction
   function assignClockDirection(){
-    var up = directionStates['up'],
-     right = directionStates['right'],
-      down =  directionStates['down'],
-      left = directionStates['left'];
 
+    var up = keyStates['up'],
+      right = keyStates['right'],
+      down =  keyStates['down'],
+      left = keyStates['left'];
 
+    
     if( up && right ){
-      directionStates['clock'] = 1
+      keyStates['clock'] = 1
     }
     else if( right && down ){
-      directionStates['clock'] = 3
+      keyStates['clock'] = 3
     }
     else if( down && left ){
-      directionStates['clock'] = 5
+      keyStates['clock'] = 5
     }
     else if( left && up ){
-      directionStates['clock'] = 7
+      keyStates['clock'] = 7
     }
     else if( right ){
-      directionStates['clock'] = 2
+      keyStates['clock'] = 2
     }
     else if( down ){
-      directionStates['clock'] = 4
+      keyStates['clock'] = 4
     }
     else if( left ){
-      directionStates['clock'] = 6
+      keyStates['clock'] = 6
     }
     else if( up ){
-      directionStates['clock'] = 8
+      keyStates['clock'] = 8
     }
     else{
-      directionStates['clock'] = 0
+      keyStates['clock'] = 0
     }
   }
 
 
-  function setDirection( direction ){
-    directionStates[direction] = true;
-  }
-
-  function unsetDirection( direction ){
-    directionStates[direction] = false;
-  }
 
 
   /*********************************************/
   /*********    BODY PART ANIMATION    *********/
   /*********************************************/
 
+
+  // setInterval(()=>{
+  //   console.log(keyStates);
+  // },1000);
   
   var bodyKeys = Object.keys( bodyParts );
   var bodyValues = Object.values( bodyParts );
 
 
-  function animate(direction){
+  function animatePoses( direction ){
     if( 
-      // (directionStates['clock'] !== 3)&&
-      (directionStates['clock'] !== 5)
+      (keyStates['clock'] !== 5)
     ){
 
-      var clockdirection = direction ? direction : directionStates['clock'];
+      var clockdirection = direction ? direction : keyStates['clock'];
 
       // 1: go throught body parts
       for( let i = 0; i < bodyKeys.length; i++ ){
@@ -137,23 +138,19 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
           yPercent: 0
         }
 
-
         let bodyPartName = bodyKeys[i];
         let bodyPartDOMElement = bodyValues[i].el;
         let bodyPartArgs = bodyPosition[ clockdirection ][ bodyPartName ]; 
-  
 
         // prepare keys & values for level 2
         let propsKeys = bodyPartArgs ? Object.keys( bodyPartArgs ) : false;
         let propsValues = bodyPartArgs ? Object.values( bodyPartArgs ) : false;
-
 
         // 2: go throught transform props
         for( let ii = 0; ii < propsKeys.length; ii++ ){
           let prop = propsKeys[ii];
           let startValue = gsap.getProperty(bodyPartDOMElement, prop ); // get realtime current transform value 
           let endValue = propsValues[ii];
-
 
           // prevent turning in wrong direction on rotate
           if( prop === 'rotate' ){
@@ -167,67 +164,98 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
           }
           // add transform prop & value to args
           animationArgs[prop] = endValue;
-
         }
-
-        // if( bodyPartName === 'upperBody' ){
-        //   animationArgs['ease'] = 'power3.out';
-        // }
-        console.log(bodyPartName, animationArgs);
-
         // do the animation
         gsap.to( bodyPartDOMElement, animationArgs);
       }
     }
   }
 
-
+  function ifDirectionKeyDown(){
+    if( keyStates['up'] || 
+        keyStates['right'] || 
+        keyStates['down'] || 
+        keyStates['left']
+    ){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   /********************************************/
   /***********       "ENGINE"       ***********/
   /********************************************/
 
-  function onKeyChange(){
-
-    assignClockDirection();
-    if( _.isEqual(currentStates, directionStates) ){
+  function keyAction(){
+    // dont change of still same key combo
+    if( _.isEqual(currentStates, keyStates) ){
       return;
     }
-    animate();
-    currentStates = Object.assign({}, directionStates);
-    infoBox.innerHTML = directionStates['clock'];
-  }
 
-  // animate on start
-  animate(2); // value is clock-direction
-  infoBox.innerHTML = 2;
-
-
-  function keydown(e){
-    var keyDirection = getKeyDirection(e.keyCode);
-      setDirection( keyDirection );
-      onKeyChange()
-  }
-
-  function keyup(e){
-    var keyDirection = getKeyDirection(e.keyCode);
-      unsetDirection( keyDirection );
-      onKeyChange()
-  }
-
-
-  document.addEventListener('keydown', keydown );
-  document.addEventListener('keyup', keyup );
-
-
-  function gameLoop(){
-    if( !_.isEqual(currentStates, directionStates) ){
-      onKeyChange();
+    // pose
+    if( keyStates['clock'] >= 0 && keyStates['clock'] <= 8 ){
+      animatePoses();
     }
 
-    window.requestAnimationFrame( gameLoop )
+    // if any direction key is down
+    if( ifDirectionKeyDown() ){
+      infoBox.classList.add('direction-key-down')
+    }else{
+      infoBox.classList.remove('direction-key-down')
+    }
+
+    // if move key is down
+    if(keyStates.move){
+      infoBox.classList.add('move-key-down')
+    }else{
+      infoBox.classList.remove('move-key-down')
+    }
+
+    // update current state
+    currentStates = Object.assign({}, keyStates);
+    infoBox.innerHTML = keyStates['clock'];
   }
 
-  window.requestAnimationFrame( gameLoop )
+
+
+  /********************************************/
+  /*********       KEY STROKES       **********/
+  /********************************************/
+  document.addEventListener('keydown', keydown );
+  function keydown(e){
+    var direction = getKeyDirection(e.keyCode);  // returns converted keyCode to direction
+      keyStates[direction] = true; // assign keyState to true
+      assignClockDirection( direction );
+      keyAction()
+  }
+
+  document.addEventListener('keyup', keyup );
+  function keyup(e){
+    var direction = getKeyDirection(e.keyCode);  // returns converted keyCode to direction
+      keyStates[direction] = false; // assign keyState to false
+      assignClockDirection( direction );
+      keyAction()
+  }
+
+
+
+  
+
+  // function gameLoop(){
+  //   if( !_.isEqual(currentStates, keyStates) ){
+  //     keyAction();
+  //   }
+
+  //   window.requestAnimationFrame( gameLoop )
+  // }
+
+  // window.requestAnimationFrame( gameLoop )
+
+
+  // animate on start
+  animatePoses(2); // value is clock-direction
+  infoBox.innerHTML = 2;
+
 
 }); // requirejs end 

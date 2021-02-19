@@ -1,6 +1,8 @@
 /*global define */
 
 // define bodyPositions
+
+
 define({
   1: {
     head: {
@@ -225,9 +227,6 @@ define({
     },
     footRight:{
       rotate: 8
-    },
-    body: {
-      // ease: 'power4.out'
     }
   }
 });

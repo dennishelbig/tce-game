@@ -37,6 +37,14 @@ html, body{
   line-height: 1;
   display: flex;
   align-items: center;
+
+  &.direction-key-down{
+    color: red
+  }
+
+  &.move-key-down{
+    background: rgba(pink, 0.85);
+  }
 }
 
 
