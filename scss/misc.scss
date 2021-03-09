@@ -11,6 +11,13 @@ html, body{
   }
 }
 
+div.is-posing{
+  &:after,
+  &:before{
+    background-color: turquoise!important;
+  }
+  background-color: turquoise!important;
+}
 
 .container{
   width: 100rem;
@@ -27,12 +34,12 @@ html, body{
 
 #info-box{
   position: absolute;
-  height: 50px;
+  height: 5rem;
   width: 100%;
   background: rgba(pink, 0.5);
-  font-size: 30px;
+  font-size: 3rem;
   font-family: Arial;
-  padding-left: 20px;
+  padding: 0 2rem;
   box-sizing: border-box;
   line-height: 1;
   display: flex;
@@ -44,6 +51,40 @@ html, body{
 
   &.move-key-down{
     background: rgba(pink, 0.85);
+  }
+
+  .right{
+    text-align: right;
+    flex-grow: 1;
+    font-size: 2rem;
+  }
+}
+
+
+#json-preview{
+  position: absolute;
+  width: 33%;
+  height: calc(100% - 5rem);
+  bottom: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  textarea{
+    flex-grow: 1;
+    border: 0;
+    background: rgba( lightgray, 0.5);
+  }
+
+  .button-row{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    
+    button{
+      margin-right: 1rem
+    }
   }
 }
 
@@ -81,7 +122,7 @@ html, body{
     width: 2px;
     background: rgba(0,0,0,0.2);
     top: 0%;
-    left: calc(50% - 1px);
+    left: calc(66% - 1px);
 
     z-index: 0;
   }

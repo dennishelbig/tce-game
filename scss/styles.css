@@ -11,6 +11,13 @@ html, body {
   }
 }
 
+div.is-posing {
+  background-color: turquoise !important;
+}
+div.is-posing:after, div.is-posing:before {
+  background-color: turquoise !important;
+}
+
 .container {
   width: 100rem;
   height: 100rem;
@@ -25,12 +32,12 @@ html, body {
 
 #info-box {
   position: absolute;
-  height: 50px;
+  height: 5rem;
   width: 100%;
   background: rgba(255, 192, 203, 0.5);
-  font-size: 30px;
+  font-size: 3rem;
   font-family: Arial;
-  padding-left: 20px;
+  padding: 0 2rem;
   box-sizing: border-box;
   line-height: 1;
   display: flex;
@@ -41,6 +48,34 @@ html, body {
 }
 #info-box.move-key-down {
   background: rgba(255, 192, 203, 0.85);
+}
+#info-box .right {
+  text-align: right;
+  flex-grow: 1;
+  font-size: 2rem;
+}
+
+#json-preview {
+  position: absolute;
+  width: 33%;
+  height: calc(100% - 5rem);
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+#json-preview textarea {
+  flex-grow: 1;
+  border: 0;
+  background: rgba(211, 211, 211, 0.5);
+}
+#json-preview .button-row {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+#json-preview .button-row button {
+  margin-right: 1rem;
 }
 
 @keyframes blink {
@@ -73,7 +108,7 @@ html, body {
   width: 2px;
   background: rgba(0, 0, 0, 0.2);
   top: 0%;
-  left: calc(50% - 1px);
+  left: calc(66% - 1px);
   z-index: 0;
 }
 
@@ -98,7 +133,7 @@ html, body {
 .body {
   height: 25rem;
   top: 30rem;
-  left: calc(50% - 1px);
+  left: calc(66% - 1px);
   background-color: transparent;
 }
 
@@ -201,6 +236,7 @@ html, body {
 .neck {
   height: 3.5rem;
   bottom: 10rem;
+  transform-origin: 50% 100%;
 }
 
 .chest {
@@ -244,35 +280,4 @@ html, body {
   background: rgba(0, 0, 255, 0.6);
   transform: translate(-50%, -50%);
   border-radius: 50%;
-}
-
-body .up .arm {
-  transform: rotate(180deg);
-}
-body .up.right .arm {
-  transform: rotate(-135deg);
-}
-body .right .arm {
-  transform: rotate(-90deg);
-}
-body .down.right .arm {
-  transform: rotate(-45deg);
-}
-body .down .arm {
-  transform: rotate(0deg);
-}
-body .down.left .arm {
-  transform: rotate(45deg);
-}
-body .left .arm {
-  transform: rotate(90deg);
-}
-body .up.left .arm {
-  transform: rotate(135deg);
-}
-
-.arm,
-.leg {
-  transition: 0s;
-  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }

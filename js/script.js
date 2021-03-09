@@ -20,32 +20,40 @@ requirejs(
     'lodash-min',
     'gsap/minified/gsap.min',
     'bodyPositions',
-    'bodyParts'
+    'bodyParts',
+    'util/adjustPose'
   ],
 
-function (_, gsapFunction, bodyPosition, bodyParts ) {
-  
+function (_, gsapFunction, bodyPosition, bodyParts, posing ) {
+
+
+
 
   const gsap = gsapFunction.gsap;
-  var infoBox = document.querySelector('#info-box');
+  var infoBoxLeft = document.querySelector('#info-box .left');
 
 
-  var keyStates;
-    keyStates = {
-      clock : 0,
-      up : false,
-      right : false,
-      down : false,
-      left : false,
-      move : false
-    }
+  var keyStates = {
+    clock : 0,
+    up : false,
+    right : false,
+    down : false,
+    left : false,
+    move : false,
+    shift: false,
+    posing: false
+  }
   var currentStates = Object.assign({}, keyStates);
 
 
+  document.addEventListener('click', (e)=>{
+    posing(e.target, keyStates)
+  })
+
 
   function getKeyDirection(input) {
-
     var inputMap = {
+      16: "shift",
       38: "up", // up
       87: "up", // w
       39: "right", // right
@@ -70,7 +78,6 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
       right = keyStates['right'],
       down =  keyStates['down'],
       left = keyStates['left'];
-
     
     if( up && right ){
       keyStates['clock'] = 1
@@ -108,11 +115,6 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
   /*********    BODY PART ANIMATION    *********/
   /*********************************************/
 
-
-  // setInterval(()=>{
-  //   console.log(keyStates);
-  // },1000);
-  
   var bodyKeys = Object.keys( bodyParts );
   var bodyValues = Object.values( bodyParts );
 
@@ -135,7 +137,10 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
           ease: "power3.out",
           // defaults if key doesn't exist
           rotate: 0,
-          yPercent: 0
+          xPercent: 0,
+          yPercent: 0,
+          x: 0,
+          y: 0
         }
 
         let bodyPartName = bodyKeys[i];
@@ -190,7 +195,15 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
   function keyAction(){
     // dont change of still same key combo
     if( _.isEqual(currentStates, keyStates) ){
-      return;
+      return
+    }
+
+    if( keyStates['shift'] ){
+      return
+    }
+
+    if(keyStates['posing']){
+      return
     }
 
     // pose
@@ -200,23 +213,22 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
 
     // if any direction key is down
     if( ifDirectionKeyDown() ){
-      infoBox.classList.add('direction-key-down')
+      infoBoxLeft.classList.add('direction-key-down')
     }else{
-      infoBox.classList.remove('direction-key-down')
+      infoBoxLeft.classList.remove('direction-key-down')
     }
 
     // if move key is down
     if(keyStates.move){
-      infoBox.classList.add('move-key-down')
+      infoBoxLeft.classList.add('move-key-down')
     }else{
-      infoBox.classList.remove('move-key-down')
+      infoBoxLeft.classList.remove('move-key-down')
     }
 
     // update current state
     currentStates = Object.assign({}, keyStates);
-    infoBox.innerHTML = keyStates['clock'];
+    infoBoxLeft.innerHTML = keyStates['clock'];
   }
-
 
 
   /********************************************/
@@ -255,7 +267,7 @@ function (_, gsapFunction, bodyPosition, bodyParts ) {
 
   // animate on start
   animatePoses(2); // value is clock-direction
-  infoBox.innerHTML = 2;
+  infoBoxLeft.innerHTML = 2;
 
 
 }); // requirejs end 

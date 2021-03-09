@@ -35,7 +35,7 @@
 .body{
   height: 25rem;
   top: 30rem;
-  left: calc(50% - 1px);
+  left: calc(66% - 1px);
   background-color: transparent;
 }
 
@@ -138,6 +138,7 @@
 .neck{
   height: 3.5rem;
   bottom: 10rem;
+  transform-origin: 50% 100%;
 }
 
 
