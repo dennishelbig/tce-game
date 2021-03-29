@@ -1,0 +1,32 @@
+@mixin skin-left-right($name){
+  .skin-container.skin-#{$name}-left{
+    background-image: url('../img/skins/test/#{$name}-left.png');
+    background-size: 100% 100%;
+  }
+  .skin-container.skin-#{$name}-right{
+    background-image: url('../img/skins/test/#{$name}-right.png');
+    background-size: 100% 100%;
+  }
+}
+
+@mixin skin-single($name){
+  .skin-container.skin-#{$name}{
+    background-image: url('../img/skins/test/#{$name}.png');
+    background-size: 100% 100%;
+    z-index: 1;
+  }
+}
+
+
+// @include skin-left-right('arm');
+// @include skin-left-right('forearm');
+// @include skin-left-right('hand');
+
+// @include skin-left-right('leg');
+// @include skin-left-right('shin');
+// @include skin-left-right('foot');
+
+// @include skin-single('head');
+// @include skin-single('chest');
+// @include skin-single('hip');
+

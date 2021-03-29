@@ -73,7 +73,7 @@ define({
 
   3: {
     body:{
-      yPercent: 60
+      y: '21rem'
     },
     armLeft: {
       rotate: 80
@@ -116,7 +116,7 @@ define({
   4:{
     body: {
       ease: 'power3.out',
-      yPercent: 75
+      y: '24rem'
     },
     armLeft: {
       rotate: 50
@@ -223,10 +223,12 @@ define({
       rotate: -8
     },
     footLeft:{
-      rotate: -8
+      rotate: -8,
+      xPercent: 50
     },
     footRight:{
-      rotate: 8
+      rotate: 8,
+      xPercent: -50
     }
   }
 });

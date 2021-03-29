@@ -21,16 +21,29 @@ requirejs(
     'gsap/minified/gsap.min',
     'bodyPositions',
     'bodyParts',
-    'util/adjustPose'
+    'util/adjustPose',
+    'util/jsonUtils'
   ],
-
-function (_, gsapFunction, bodyPosition, bodyParts, posing ) {
-
+  function (_, gsapFunction, bodyPosition, bodyParts, posing, jsonUtils ) {
 
 
 
   const gsap = gsapFunction.gsap;
   var infoBoxLeft = document.querySelector('#info-box .left');
+  var infoBoxRight = document.querySelector('#info-box .right');
+  var createJsonButton = document.querySelector('#create-json');
+  var loadJsonButton = document.querySelector('#load-json');
+
+  createJsonButton.addEventListener('click', jsonUtils.createJson )
+  loadJsonButton.addEventListener('click', jsonUtils.loadJson )
+
+
+  var inputs = {
+    rotate: infoBoxRight.querySelector('input[name="info-rotate"]'),
+    x : infoBoxRight.querySelector('input[name="info-x"]'),
+    y : infoBoxRight.querySelector('input[name="info-y"]'),
+    height : infoBoxRight.querySelector('input[name="info-height"]')
+  }
 
 
   var keyStates = {
@@ -41,19 +54,19 @@ function (_, gsapFunction, bodyPosition, bodyParts, posing ) {
     left : false,
     move : false,
     shift: false,
+    cmd: false,
     posing: false
   }
   var currentStates = Object.assign({}, keyStates);
 
 
-  document.addEventListener('click', (e)=>{
-    posing(e.target, keyStates)
-  })
+  posing( keyStates, inputs )
 
 
   function getKeyDirection(input) {
     var inputMap = {
       16: "shift",
+      91: "cmd",
       38: "up", // up
       87: "up", // w
       39: "right", // right
@@ -115,64 +128,66 @@ function (_, gsapFunction, bodyPosition, bodyParts, posing ) {
   /*********    BODY PART ANIMATION    *********/
   /*********************************************/
 
+
   var bodyKeys = Object.keys( bodyParts );
   var bodyValues = Object.values( bodyParts );
 
 
   function animatePoses( direction ){
-    if( 
-      (keyStates['clock'] !== 5)
+    if(
+      keyStates['clock'] === 5
     ){
+      return
+    }
+    
+    var clockdirection = direction ? direction : keyStates['clock'];
 
-      var clockdirection = direction ? direction : keyStates['clock'];
+    // 1: go throught body parts
+    for( let i = 0; i < bodyKeys.length; i++ ){
 
-      // 1: go throught body parts
-      for( let i = 0; i < bodyKeys.length; i++ ){
-
-        // maybe try map instead of object
-        let animationArgs = { 
-          duration: 0.25,
-          force3D: true,
-          height: '',
-          ease: "power3.out",
-          // defaults if key doesn't exist
-          rotate: 0,
-          xPercent: 0,
-          yPercent: 0,
-          x: 0,
-          y: 0
-        }
-
-        let bodyPartName = bodyKeys[i];
-        let bodyPartDOMElement = bodyValues[i].el;
-        let bodyPartArgs = bodyPosition[ clockdirection ][ bodyPartName ]; 
-
-        // prepare keys & values for level 2
-        let propsKeys = bodyPartArgs ? Object.keys( bodyPartArgs ) : false;
-        let propsValues = bodyPartArgs ? Object.values( bodyPartArgs ) : false;
-
-        // 2: go throught transform props
-        for( let ii = 0; ii < propsKeys.length; ii++ ){
-          let prop = propsKeys[ii];
-          let startValue = gsap.getProperty(bodyPartDOMElement, prop ); // get realtime current transform value 
-          let endValue = propsValues[ii];
-
-          // prevent turning in wrong direction on rotate
-          if( prop === 'rotate' ){
-            let difference = Math.abs(startValue - endValue); 
-            let deg = ( difference > 180 ) ? 360 - difference : difference;
-
-            // only if angle is larger than 180deg
-            if( difference > 180 ){
-              endValue = (deg < startValue) ? startValue + deg : startValue - deg;
-            }
-          }
-          // add transform prop & value to args
-          animationArgs[prop] = endValue;
-        }
-        // do the animation
-        gsap.to( bodyPartDOMElement, animationArgs);
+      // maybe try map instead of object
+      let animationArgs = { 
+        duration: 0.2,
+        force3D: true,
+        height: '',
+        ease: "power3.out",
+        // defaults if key doesn't exist
+        rotate: 0,
+        xPercent: 0,
+        yPercent: 0,
+        x: 0,
+        y: 0
       }
+
+      let bodyPartName = bodyKeys[i];
+      let bodyPartDOMElement = bodyValues[i].el;
+      let bodyPartArgs = bodyPosition[ clockdirection ][ bodyPartName ]; 
+
+      // prepare keys & values for level 2
+      let propsKeys = bodyPartArgs ? Object.keys( bodyPartArgs ) : false;
+      let propsValues = bodyPartArgs ? Object.values( bodyPartArgs ) : false;
+
+      // 2: go throught transform props
+      for( let ii = 0; ii < propsKeys.length; ii++ ){
+        let prop = propsKeys[ii];
+        let startValue = gsap.getProperty(bodyPartDOMElement, prop ); // get realtime current transform value 
+        let endValue = propsValues[ii];
+
+        // prevent turning in wrong direction on rotate
+        if( prop === 'rotate' ){
+          let difference = Math.abs(startValue - endValue); 
+          let deg = ( difference > 180 ) ? 360 - difference : difference;
+
+          // only if angle is larger than 180deg
+          if( difference > 180 ){
+            endValue = (deg < startValue) ? startValue + deg : startValue - deg;
+          }
+        }
+        // add transform prop & value to args
+        animationArgs[prop] = endValue;
+      }
+      // do the animation
+      gsap.to( bodyPartDOMElement, animationArgs);
     }
   }
 
@@ -194,15 +209,14 @@ function (_, gsapFunction, bodyPosition, bodyParts, posing ) {
 
   function keyAction(){
     // dont change of still same key combo
-    if( _.isEqual(currentStates, keyStates) ){
-      return
-    }
+    if( 
+      _.isEqual(currentStates, keyStates) ||
+      keyStates['shift'] ||
+      keyStates['cmd'] || 
+      keyStates['posing'] ||
+      document.querySelector('.is-posing') !== null // not move  if "is-posing"
 
-    if( keyStates['shift'] ){
-      return
-    }
-
-    if(keyStates['posing']){
+    ){
       return
     }
 
@@ -245,29 +259,18 @@ function (_, gsapFunction, bodyPosition, bodyParts, posing ) {
   document.addEventListener('keyup', keyup );
   function keyup(e){
     var direction = getKeyDirection(e.keyCode);  // returns converted keyCode to direction
-      keyStates[direction] = false; // assign keyState to false
+      if(
+        direction === 'cmd' ||
+        direction === 'shift'
+      ){
+        setTimeout(()=>{
+          keyStates[direction] = false; // assign keyState to false
+        },0)
+      }else{
+        keyStates[direction] = false; // assign keyState to false
+      }
+
       assignClockDirection( direction );
       keyAction()
   }
-
-
-
-  
-
-  // function gameLoop(){
-  //   if( !_.isEqual(currentStates, keyStates) ){
-  //     keyAction();
-  //   }
-
-  //   window.requestAnimationFrame( gameLoop )
-  // }
-
-  // window.requestAnimationFrame( gameLoop )
-
-
-  // animate on start
-  animatePoses(2); // value is clock-direction
-  infoBoxLeft.innerHTML = 2;
-
-
 }); // requirejs end 

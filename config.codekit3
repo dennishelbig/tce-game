@@ -7,7 +7,7 @@
       "uuidString" : "A731EC40-CFAC-4BE9-99B3-2D06DA3F2D94"
     }
   ],
-  "creatorBuild" : "34018",
+  "creatorBuild" : "34127",
   "files" : {
     "\/.gitignore" : {
       "cB" : 0,
@@ -16,6 +16,214 @@
       "oA" : 0,
       "oAP" : "\/.gitignore",
       "oF" : 0
+    },
+    "\/img\/body-background.png" : {
+      "ft" : 32768,
+      "iS" : 523035,
+      "oA" : 0,
+      "oAP" : "\/img\/body-background.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/arm-left.png" : {
+      "ft" : 32768,
+      "iS" : 19057,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/arm-left.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/arm-right.png" : {
+      "ft" : 32768,
+      "iS" : 17418,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/arm-right.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/chest.png" : {
+      "ft" : 32768,
+      "iS" : 35450,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/chest.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/foot-left.png" : {
+      "ft" : 32768,
+      "iS" : 10194,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/foot-left.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/foot-right.png" : {
+      "ft" : 32768,
+      "iS" : 8884,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/foot-right.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/forearm-left.png" : {
+      "ft" : 32768,
+      "iS" : 9803067,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/forearm-left.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/forearm-right.png" : {
+      "ft" : 32768,
+      "iS" : 14028,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/forearm-right.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/hand-left.png" : {
+      "ft" : 32768,
+      "iS" : 20780,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/hand-left.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/hand-right.png" : {
+      "ft" : 32768,
+      "iS" : 20683,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/hand-right.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/head.png" : {
+      "ft" : 32768,
+      "iS" : 35130,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/head.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/hip.png" : {
+      "ft" : 32768,
+      "iS" : 34005,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/hip.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/leg-left.png" : {
+      "ft" : 32768,
+      "iS" : 44785,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/leg-left.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/leg-right.png" : {
+      "ft" : 32768,
+      "iS" : 38241,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/leg-right.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/shin-left.png" : {
+      "ft" : 32768,
+      "iS" : 38060,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/shin-left.png",
+      "oF" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/img\/skins\/test\/shin-right.png" : {
+      "ft" : 32768,
+      "iS" : 33812,
+      "oA" : 0,
+      "oAP" : "\/img\/skins\/test\/shin-right.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     },
     "\/index.html" : {
       "cB" : 0,
@@ -1465,25 +1673,14 @@
       "sC" : 3,
       "tS" : 0
     },
-    "\/js\/moves\/bodyMoves-min.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/js\/moves\/bodyMoves-min-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/js\/moves\/bodyMoves.js" : {
       "bF" : 0,
       "ft" : 64,
       "ma" : 0,
       "mi" : 1,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/js\/moves\/bodyMoves-min.js",
-      "oF" : 0,
+      "oF" : 1,
       "sC" : 3,
       "tS" : 0
     },
@@ -1539,14 +1736,14 @@
       "sC" : 3,
       "tS" : 0
     },
-    "\/js\/util\/jsonLoader.js" : {
+    "\/js\/util\/jsonUtils.js" : {
       "bF" : 0,
       "ft" : 64,
       "ma" : 0,
       "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/js\/util\/jsonLoader-min.js",
-      "oF" : 0,
+      "oA" : 1,
+      "oAP" : "\/js\/util\/jsonUtils-min.js",
+      "oF" : 1,
       "sC" : 3,
       "tS" : 0
     },
@@ -1577,7 +1774,7 @@
       "rFN" : 0,
       "uCM" : 0
     },
-    "\/scss\/_positions.scss" : {
+    "\/scss\/body-mesures.scss" : {
       "aP" : 0,
       "bl" : 0,
       "dP" : 10,
@@ -1585,7 +1782,7 @@
       "ft" : 4,
       "ma" : 0,
       "oA" : 1,
-      "oAP" : "\/scss\/_positions.css",
+      "oAP" : "\/scss\/body-mesures.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -1619,6 +1816,20 @@
       "pg" : 0,
       "sct" : 0
     },
+    "\/scss\/skins.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/scss\/skins.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
     "\/scss\/styles.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -1631,13 +1842,21 @@
       "oF" : 0,
       "pg" : 0
     },
+    "\/scss\/styles.css.map" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/scss\/styles.css.map",
+      "oF" : 0
+    },
     "\/scss\/styles.scss" : {
       "aP" : 0,
       "bl" : 0,
       "dP" : 10,
       "ec" : 1,
       "ft" : 4,
-      "ma" : 0,
+      "ma" : 1,
       "oA" : 0,
       "oAP" : "\/scss\/styles.css",
       "oF" : 0,
@@ -3689,27 +3908,30 @@
 
       ],
       "contentEntries" : [
-        "!(node_modules)\/**\/*.html",
-        "!(node_modules)\/**\/*.htm",
-        "!(node_modules)\/**\/*.shtml",
-        "!(node_modules)\/**\/*.xhtml",
-        "!(node_modules)\/**\/*.php",
-        "!(node_modules)\/**\/*.js",
-        "!(node_modules)\/**\/*.ts",
-        "!(node_modules)\/**\/*.coffee",
-        "!(node_modules)\/**\/*.erb",
-        "!(node_modules)\/**\/*.pug",
-        "!(node_modules)\/**\/*.jade",
-        "!(node_modules)\/**\/*.slim",
-        "!(node_modules)\/**\/*.haml",
-        "!(node_modules)\/**\/*.md",
-        "!(node_modules)\/**\/*.kit"
+        "**\/*.html",
+        "**\/*.htm",
+        "**\/*.shtml",
+        "**\/*.xhtml",
+        "**\/*.php",
+        "**\/*.js",
+        "**\/*.ts",
+        "**\/*.coffee",
+        "**\/*.erb",
+        "**\/*.pug",
+        "**\/*.jade",
+        "**\/*.slim",
+        "**\/*.haml",
+        "**\/*.md",
+        "**\/*.kit"
       ],
       "removeFontFace" : 0,
       "removeKeyframes" : 0,
       "removeVariables" : 0,
       "safelistEntries" : [
 
+      ],
+      "skippedEntries" : [
+        "node_modules\/**"
       ]
     },
     "rollupContext" : "",
@@ -3744,6 +3966,7 @@
     "tsNoImplicitThis" : 0,
     "tsNoImplicitUseStrict" : 0,
     "tsNoLib" : 0,
+    "tsNoPropertyAccessFromIndexSignature" : 0,
     "tsNoResolve" : 0,
     "tsNoStrictGenericChecks" : 0,
     "tsNoUncheckedIndexAccess" : 0,

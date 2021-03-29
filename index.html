@@ -9,14 +9,31 @@
   <div class="container">
     <div id="info-box">
       <div class="left"></div>
-      <div class="right"></div>
+      <div class="right">
+        <div class="info-rotate">
+          <span>rotate: </span>
+          <input type="number" name="info-rotate">
+        </div>
+        <div class="info-x">
+          <span>x: </span>
+          <input type="number" name="info-x">
+        </div>
+        <div class="info-y>">
+          <span>y: </span>
+          <input type="number" name="info-y">
+        </div>
+        <div class="info-height>">
+          <span>height: </span>
+          <input type="number" name="info-height">
+        </div>
+      </div>
     </div>
 
     <div id="json-preview">
       <textarea id="json-text"></textarea>
       <div class="button-row">
-        <button class="json-create">create</button>
-        <button class="json-create">load</button>
+        <button id="create-json">create</button>
+        <button id="load-json">load</button>
       </div>
     </div>
 
@@ -25,22 +42,51 @@
       <div class="body">
 
         <div class="core">
+          <div class="skin-container absolute skin-core"></div>
+
           <div class="chest">
+            <div class="skin-container absolute skin-chest"></div>
 
             <div class="neck">
-              <div class="head"></div>
+              <div class="head">
+                <div class="skin-container skin-head"></div>
+              </div>
             </div>
 
             <div class="shoulder">
               <div class="arm left">
+                <div class="skin-container skin-arm-left">
+                  <div class="skin-arm-top skin-item"></div>
+                  <div class="skin-arm-mid skin-item"></div>
+                  <div class="skin-arm-bottom skin-item"></div>
+                </div>
                 <div class="forearm">
-                  <div class="hand left"></div>
+                  <div class="skin-container skin-forearm-left">
+                    <div class="skin-forearm-top skin-item"></div>
+                    <div class="skin-forearm-mid skin-item"></div>
+                    <div class="skin-forearm-bottom skin-item"></div>
+                  </div>
+                  <div class="hand left">
+                    <div class="skin-container skin-hand-left"></div>
+                  </div>
                 </div>
               </div>
 
               <div class="arm right">
+                <div class="skin-container skin-arm-right">
+                  <div class="skin-arm-top skin-item"></div>
+                  <div class="skin-arm-mid skin-item"></div>
+                  <div class="skin-arm-bottom skin-item"></div>
+                </div>
                 <div class="forearm">
-                  <div class="hand right"></div>
+                  <div class="skin-container skin-forearm-right">
+                    <div class="skin-forearm-top skin-item"></div>
+                    <div class="skin-forearm-mid skin-item"></div>
+                    <div class="skin-forearm-bottom skin-item"></div>
+                  </div>
+                  <div class="hand right">
+                    <div class="skin-container skin-hand-right"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -48,16 +94,51 @@
         </div>
 
         <div class="hip">
+          <div class="skin-container absolute skin-hip">
+          </div>
 
           <div class="leg left">
+
+            <div class="skin-container skin-leg-left">
+              <div class="skin-leg-top skin-item"></div>
+              <div class="skin-leg-mid skin-item"></div>
+              <div class="skin-leg-bottom skin-item"></div>
+            </div>
+
             <div class="shin">
-              <div class="foot left"></div>
+
+              <div class="skin-container skin-shin-left">
+                <div class="skin-shin-top skin-item"></div>
+                <div class="skin-shin-mid skin-item"></div>
+                <div class="skin-shin-bottom skin-item"></div>
+              </div>
+
+              <div class="foot left">
+                <div class="skin-container skin-foot-left"></div>
+              </div>
             </div>
           </div>
 
           <div class="leg right">
+
+            <div class="skin-container skin-leg-right">
+              <div class="skin-leg-top skin-item"></div>
+              <div class="skin-leg-mid skin-item"></div>
+              <div class="skin-leg-bottom skin-item"></div>
+            </div>
+
             <div class="shin">
-              <div class="foot right"></div>
+
+              <div class="skin-container skin-shin-right">
+                <div class="skin-shin-top skin-item"></div>
+                <div class="skin-shin-mid skin-item"></div>
+                <div class="skin-shin-bottom skin-item"></div>
+              </div>
+
+              <div class="foot right">
+                <div class="skin-container skin-foot-right"></div>
+              </div>
+
             </div>
           </div>
 
@@ -65,6 +146,9 @@
       </div>
 
     </div>
+
+    <div class="body-background"></div>
+
   </div>
   <script data-main="js/script-min.js" src="js/require.js"></script>
 </body>
